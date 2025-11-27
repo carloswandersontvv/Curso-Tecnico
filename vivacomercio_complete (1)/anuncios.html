@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Anúncios - VivaComércio</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Anúncios</h1>
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <a href="login.html">Entrar</a>
+    </nav>
+  </header>
+
+  <main class="center">
+    
+    <div class="search-row">
+      <input id="search" placeholder="Pesquisar título" />
+      <select id="filterType">
+        <option value="">Todos</option>
+        <option value="venda">Venda</option>
+        <option value="doacao">Doação</option>
+        <option value="troca">Troca</option>
+      </select>
+    </div>
+
+    <!-- LISTA DE ANÚNCIOS -->
+    <div id="lista"></div>
+
+  </main>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <!-- Config -->
+  <script src="js/firebase.js"></script>
+  <script src="js/auth.js"></script>
+
+  <!-- Sistema de anúncios -->
+  <script src="js/anuncios.js"></script>
+
+</body>
+</html>
