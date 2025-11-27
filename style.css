@@ -238,9 +238,10 @@ form button:hover {
     gap: 30px;
     background: var(--azul-claro);
     color: var(--branco);
-    padding: 60px 30px;
+    padding: 25px 30px;
     border-radius: 10px;
     flex-wrap: wrap;
+    
 }
 
 .tela1-texto {
@@ -265,7 +266,7 @@ form button:hover {
 
 .tela1-texto .sub {
     font-weight: bold;
-    color: var(--amarelo-seduc);
+    color: var(--preto);
 }
 
 .tela1-img {
@@ -273,6 +274,12 @@ form button:hover {
     display: flex;
     justify-content: center;
     min-width: 260px;
+    transition: 0.4s ease;
+}
+
+.tela1-img img:hover {
+      transform: scale(1.03);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
 }
 
 .tela1-img img {
@@ -340,28 +347,34 @@ header nav ul {
 }
 
 /* 🔥 TELA 1 OTIMIZADA PARA CELULAR */
+/* 🔥 TELA 1 – VERSÃO SUPER COMPACTA PARA CELULAR */
 .tela1 {
+    padding: 10px 10px;  /* mínimo possível */
+    gap: 10px;
     text-align: center;
-    padding: 25px 15px; /* reduz altura */
-    gap: 20px;
 }
 
 .tela1-texto h1 {
-    font-size: 22px; /* menor */
+    font-size: 25px;
+    margin-bottom: 10px;
 }
 
 .tela1-texto h2 {
-    font-size: 16px; /* menor */
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 
 .tela1-texto p {
-    font-size: 14px; /* menor */
+    font-size: 12px;
+    margin-bottom: 4px;
 }
 
 .tela1-img img {
-    width: clamp(260px, 70vw, 380px); /* imagem bem maior e responsiva */
+    width: 100%;          /* imagem BEM menor */
+    max-width: 300px;    /* limite duro para telas pequenas */
+    height: auto;
+    border-radius: 10px;
 }
-
 
 /* -------------------------------- */
 
