@@ -124,8 +124,10 @@ let questions = [
   { q:'Planeta mais próximo do Sol?', a:['Terra','Vênus','Mercúrio','Marte'], c:2 },
   { q:'Sinônimo de FELIZ:', a:['Triste','Bravo','Contente','Sério'], c:2 },
   { q:'Maior planeta?', a:['Terra','Saturno','Júpiter','Netuno'], c:2 },
-  { q:'Oceano mais profundo?', a:['Índico','Ártico','Pacífico','Atlântico'], c:2 }
+  { q:'Oceano mais profundo?', a:['Índico','Ártico','Pacífico','Atlântico'], c:2 },
+  { q:'Qual linguagem de programação é usada principalmente para desenvolvimento web?', a:['Python','JavaScript','C++','Java'], c:1 }
 ];
+
 let unusedQuestions=[...questions];
 
 /* ======================== HUD ======================== */
