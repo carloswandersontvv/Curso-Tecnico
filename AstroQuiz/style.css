@@ -290,9 +290,5 @@ html, body {
     }
 }
 /* 🔥 BOTÕES MAIS BAIXOS NO CELULAR — NÃO ATRAPALHAM O FOGUETE */
-@media (max-width: 600px) {
-    #move-controls {
-        bottom: calc(40px + env(safe-area-inset-bottom)); /* Aumentei de 14px → 40px */
-    }
-}
+
 
