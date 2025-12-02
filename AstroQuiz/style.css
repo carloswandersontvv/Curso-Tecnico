@@ -203,7 +203,7 @@ html, body {
 }
 
 .shoot-btn { 
-    background:radial-gradient(circle at 30% 30%, #ffd07a, #ff6f3a); 
+    background:radial-gradient(circle at 30% 30%, #ffc65b, #ff3a3a); 
     color:#111; 
     font-size:clamp(30px,12vw,52px); 
     padding:clamp(20px,6vw,38px); 
@@ -289,3 +289,10 @@ html, body {
         margin: 0 4px;         /* aproxima ainda mais */
     }
 }
+/* 🔥 BOTÕES MAIS BAIXOS NO CELULAR — NÃO ATRAPALHAM O FOGUETE */
+@media (max-width: 600px) {
+    #move-controls {
+        bottom: calc(5px + env(safe-area-inset-bottom)); /* Aumentei de 14px → 40px */
+    }
+}
+
