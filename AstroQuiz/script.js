@@ -1,4 +1,11 @@
-/* ASTROQUIZ — script.js COMPLETO COM POWERS E NAVE EVOLUTIVA */
+/* ========================
+   ASTROQUIZ — script.js
+   Completo e atualizado:
+   - powerups
+   - starfield
+   - perguntas com feedback ACERTO/ERRO
+   - HUD e persistência de recorde
+   ======================== */
 
 /* ======================== CONFIGURAÇÃO DO CANVAS ======================== */
 const canvas = document.getElementById('gameCanvas');
@@ -9,7 +16,7 @@ function resizeCanvas(){
   canvas.height = window.innerHeight;
 }
 resizeCanvas();
-window.addEventListener('resize', ()=>{
+window.addEventListener('resize', ()=> {
   resizeCanvas();
   initStars();
   ship.x = canvas.width/2 - ship.w/2;
@@ -38,6 +45,9 @@ const retryBtn = document.getElementById('retryBtn');
 const winBox = document.getElementById('win-container');
 const winScore = document.getElementById('win-score');
 const winRetryBtn = document.getElementById('win-retry-btn');
+
+/* FEEDBACK MESSAGE (elemento existente no seu HTML) */
+const feedbackEl = document.getElementById('feedbackMessage');
 
 /* CONTROLES DE MOVIMENTO */
 const moveLeft = document.getElementById('moveLeft');
@@ -155,6 +165,25 @@ function spawnAsteroid(){
   });
 }
 
+/* ======================== FEEDBACK: ACERTO / ERRO ======================== */
+function mostrarFeedback(tipo) {
+    if(!feedbackEl) return;
+    if (tipo === "acerto") {
+        feedbackEl.textContent = "✔ ACERTOU!";
+        feedbackEl.className = "acerto"; // utiliza suas classes css
+    } else {
+        feedbackEl.textContent = "✖ ERROU!";
+        feedbackEl.className = "erro";
+    }
+    feedbackEl.style.display = "block";
+    // animação extra: fade out via classe ou timeout
+    clearTimeout(feedbackEl._hideTimeout);
+    feedbackEl._hideTimeout = setTimeout(()=> {
+      feedbackEl.style.display = "none";
+      feedbackEl.className = "";
+    }, 1000);
+}
+
 /* ======================== EXPLOSÃO ======================== */
 function explode(x,y,amount=18){
   for(let i=0;i<amount;i++){
@@ -225,7 +254,8 @@ function activatePower(type){
 
   if(type === POWER.SHIELD){
     ship.shield = true;
-    ship.shieldHP = 2;
+    ship.shieldHP = 3; // você pediu 3 HP para o escudo
+    // mostrar feedback sutil
   } else if(type === POWER.SPEED){
     ship.speed = ship.baseSpeed * 1.6;
   } else if(type === POWER.DOUBLE){
@@ -273,16 +303,20 @@ function showQuestion(){
     const btn = document.createElement('button');
     btn.textContent = ans;
     btn.onclick = ()=>{
+      // fechar popup
       if(questionBox) questionBox.classList.add('hidden');
       paused=false;
       questionOpen=false;
 
+      // ---- AQUI: mostrar feedback de acerto / erro ----
       if(idx !== q.c){
+        mostrarFeedback("erro");           // <-- CHAMADA DO FEEDBACK (ERRO)
         lives--;
         score = Math.max(0, score-8);
         updateHUD();
         if(lives <= 0) gameOver();
       } else {
+        mostrarFeedback("acerto");         // <-- CHAMADA DO FEEDBACK (ACERTO)
         score += 15 * multiplier;
         updateHUD();
       }
@@ -591,6 +625,8 @@ function loop(){
           }
         } else {
           lives--;
+          // mostrar feedback de erro quando a nave é atingida
+          mostrarFeedback("erro");
         }
 
         updateHUD();
