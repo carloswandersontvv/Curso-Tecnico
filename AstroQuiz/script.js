@@ -55,10 +55,19 @@ const moveRight = document.getElementById('moveRight');
 let leftPressed=false, rightPressed=false;
 
 /* ======================== TECLADO ======================== */
-document.addEventListener('keydown', e=>{
-  if(e.code==='ArrowLeft') leftPressed=true;
-  if(e.code==='ArrowRight') rightPressed=true;
-  if(e.code==='Space') shoot();
+document.addEventListener('keydown', e => {
+  if (e.code === 'ArrowLeft' || e.key.toLowerCase() === 'a') leftPressed = true;
+  if (e.code === 'ArrowRight' || e.key.toLowerCase() === 'd') rightPressed = true;
+  if (e.code === 'Space') shoot();
+});
+
+document.addEventListener('keyup', e => {
+  if (e.code === 'ArrowLeft' || e.key.toLowerCase() === 'a') leftPressed = false;
+  if (e.code === 'ArrowRight' || e.key.toLowerCase() === 'd') rightPressed = false;
+});
+/* === MOUSE: atirar ao clicar === */
+document.addEventListener('mousedown', () => {
+  shoot();
 });
 
 document.addEventListener('keyup', e=>{
@@ -625,8 +634,7 @@ function loop(){
           }
         } else {
           lives--;
-          // mostrar feedback de erro quando a nave é atingida
-          mostrarFeedback("erro");
+
         }
 
         updateHUD();
