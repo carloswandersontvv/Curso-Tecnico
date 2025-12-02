@@ -3,6 +3,7 @@
 -----------------------------*/
 
 html, body {
+
     margin: 0; 
     padding: 0; 
     overflow: hidden; 
@@ -290,5 +291,11 @@ html, body {
     }
 }
 /* 🔥 BOTÕES MAIS BAIXOS NO CELULAR — NÃO ATRAPALHAM O FOGUETE */
+@media (max-width: 600px) {
+    #move-controls {
+        bottom: calc(-40px + env(safe-area-inset-bottom)); /* antes 14px */
+        padding-bottom: 10px;  /* força colar no rodapé */
+    }
+}
 
 
