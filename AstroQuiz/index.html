@@ -1,0 +1,71 @@
+v<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AstroQuiz – Futurista</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- CANVAS DO JOGO -->
+  <canvas id="gameCanvas" aria-label="Área do jogo" role="img"></canvas>
+
+  <!-- HUD / INTERFACE -->
+  <div id="hud">
+    <div class="top-row">
+        <h1 class="game-title">🚀 AstroQuiz</h1>
+        <div class="score-block">
+            <div id="score">Pontuação: 0</div>
+            <div id="highscore">Recorde: 0</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="startBtn" class="game-btn glow">▶ Iniciar</button>
+        <button id="pauseBtn" class="game-btn">⏸ Pausar</button>
+
+        <div class="status">
+            <span id="lives">Vidas: 3</span>
+            <span id="level">Nível: 1</span>
+            <span id="remaining">Para pergunta: 5</span>
+        </div>
+    </div>
+
+    <div class="power-row">
+        <div class="power-slot">Power: <span id="powerName">—</span></div>
+        <div class="multiplier">x<span id="mult">1</span></div>
+    </div>
+  </div>
+
+  <!-- CONTROLES MOBILE: MOVIMENTO + DISPARO -->
+  <div id="move-controls">
+      <button id="moveLeft" class="move-btn">⟸</button>
+      <button id="mobileShoot" class="shoot-btn">🔥</button>
+      <button id="moveRight" class="move-btn">⟹</button>
+  </div>
+
+  <!-- PERGUNTAS -->
+  <div id="question-container" class="popup hidden" role="dialog" aria-modal="true">
+      <h2 id="question-text">Pergunta?</h2>
+      <div id="answer-buttons" class="answers"></div>
+  </div>
+
+  <!-- GAME OVER -->
+  <div id="gameover-container" class="popup hidden">
+      <h2>💀 Game Over</h2>
+      <p id="final-score"></p>
+      <button id="retryBtn" class="game-btn glow">🔄 Jogar Novamente</button>
+  </div>
+
+  <!-- VITÓRIA -->
+  <div id="win-container" class="popup hidden">
+      <h2>🎉 Você Venceu!</h2>
+      <p id="win-score"></p>
+      <button id="win-retry-btn" class="game-btn glow">🔄 Jogar Novamente</button>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
